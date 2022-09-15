@@ -74,4 +74,4 @@ L'adresse possédant tout les pixels a donné transféré 1 a un autre adresse
 Balance de la 2eme adresse :
 <img src="./images/read_balance_AE.png">
 
-Contrat : ``0x795b8033bf7522b964a7b9a2843452e1bbff1b12``
+Contrat : ``0xcfd98bE633392D8C55a48c90ED2Cb5e1D5f04aa5``
