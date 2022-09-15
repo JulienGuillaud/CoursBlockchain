@@ -67,3 +67,9 @@ Consigne :
 2. Décrivez comment on peut gérer les nombres a virgules flottantes avec Solidity
 3. Pourquoi parle-t-on de nombre de décimales au sein du contrat ERC20.sol ?
 
+J'ai réussi a écrire le transfert d'un pixel (ici le pixel 12 (X:2 , Y:2):
+<img src="./images/transfer.png">
+L'adresse possédant tout les pixels a donné transféré 1 a un autre adresse
+<img src="./images/adresse_pleine.png">
+Balance de la 2eme adresse :
+<img src="./images/read_balance_AE.png">
