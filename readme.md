@@ -74,7 +74,7 @@ L'adresse possédant tout les pixels a donné transféré 1 a un autre adresse
 Balance de la 2eme adresse :
 <img src="./images/read_balance_AE.png">
 
-Contrat : ``0x469247301473aB9936Aca13bDA50a806344787E0``
+Contrat GOERLI : ``0x469247301473aB9936Aca13bDA50a806344787E0``
 
 
 Pour tester l'application react : 
