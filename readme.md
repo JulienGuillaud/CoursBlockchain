@@ -74,4 +74,12 @@ L'adresse possédant tout les pixels a donné transféré 1 a un autre adresse
 Balance de la 2eme adresse :
 <img src="./images/read_balance_AE.png">
 
-Contrat : ``0xcfd98bE633392D8C55a48c90ED2Cb5e1D5f04aa5``
+Contrat : ``0x469247301473aB9936Aca13bDA50a806344787E0``
+
+
+Pour tester l'application react : 
+
+Adresse qui possède 10-11-12 : ``0xCf51CA37117748edcF254eec605cEa56D38F54AE`` 
+Adresse qui possède les autres (la mienne) : ``0xdF12E03849Be1f3460B5C450F5B99382Ac38E89F``
+
+<img src="./images/front_1.png">

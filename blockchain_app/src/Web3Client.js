@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import { abi } from './contract_abi';
 
 
-let myAccount = (!!window && !isNaN(window.ethereum._state.accounts)) ? window.ethereum._state.accounts[0] : null;
+let myAccount = (!!window && !isNaN(window.ethereum._state.accounts[0])) ? window.ethereum._state.accounts[0] : null;
 let contract;
 let isInitialized = false;
 
@@ -43,7 +43,15 @@ export const getMyPixels = async () => {
    console.log("Contract is: ", contract);
    return await contract.methods.getPixelsByOwner(myAccount).call({from: myAccount}).then((res) => {
       console.log("Res : ",res);
-      return res
+      return res;
+   })
+}
+
+export const searchPixels = async (address) => {
+   console.log("Search : ", address);
+   return await contract.methods.getPixelsByOwner(address).call({from: myAccount}).then((res) => {
+      console.log("Res : ",res);
+      return res;
    })
 }
 
