@@ -129,7 +129,7 @@ function App() {
       <div className="field">
         <input
           type={"text"}
-          placeholder={"0xdF12E03849Be1f3460B5C450F5B99382Ac38E89F"}
+          placeholder={"0xdF12E038...."}
           onChange={searchAddressChange}
         ></input>
         <button onClick={searchPixelsHandler} className="search-pixels-button">
