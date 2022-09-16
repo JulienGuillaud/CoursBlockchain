@@ -4,7 +4,6 @@ import { abi } from './contract_abi';
 
 let myAccount = (!!window && !isNaN(window.ethereum._state.accounts[0])) ? window.ethereum._state.accounts[0] : null;
 let contract;
-let isInitialized = false;
 
 export const initWeb3 = (_setConnectButtonState) => {
    let provider = window.ethereum;
@@ -30,10 +29,9 @@ export const initWeb3 = (_setConnectButtonState) => {
       console.log("Account is now : ", myAccount);
    });
    const web3 = new Web3(provider)
-   const networkId = web3.eth.net.getId();
+   // const networkId = web3.eth.net.getId();
    contract = new web3.eth.Contract(abi, "0x469247301473aB9936Aca13bDA50a806344787E0");
 
-   isInitialized = true;
 };
 
 

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useState } from "react";
 import { initWeb3, getMyPixels, searchPixels } from "./Web3Client";
 
 let tableDataDefault = Array(5)
@@ -28,10 +28,6 @@ function App() {
   const searchAddressChange = event => {
     setAddressState(event.target.value);
   }
-
-  // useEffect(() => {
-  //   initWeb3();
-  // }, []);
 
   const connectWalletHandler = () => {
     initWeb3(setConnectButtonState);
@@ -89,7 +85,7 @@ function App() {
 
     for (var i = 0; i < blockChainReturn.length; i++) {
       var id = blockChainReturn[i].id;
-      var owner = blockChainReturn[i].owner;
+      // var owner = blockChainReturn[i].owner;
       ownedByMe.push(Number(id));
     }
 
@@ -97,7 +93,7 @@ function App() {
 
     for (var i = 0; i < newData.length; i++) {
       for (var j = 0; j < newData.length; j++) {
-        if (ownedByMe.indexOf(newData[i][j].id) != -1) {
+        if (ownedByMe.indexOf(newData[i][j].id) !== -1) {
           newData[i][j].color = "color-green";
         }
       }
