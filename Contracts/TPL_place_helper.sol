@@ -30,7 +30,6 @@ contract PlaceHelper is TPL_place_map {
                 }
             }
         }
-        return searchedPixel;
     }
 
     function getOwner(uint _id) public view returns (address) {
