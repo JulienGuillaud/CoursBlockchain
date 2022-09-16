@@ -183,8 +183,8 @@ function App() {
   class TableTdButton extends Component {
     pixelClickHandler = async () => {
       console.log("Pixel clicked : ", this.props.td.id);
-      let res = await takePixel(this.props.td.id);
-      getMyPixelsButton();
+      // let res = await takePixel(this.props.td.id);
+      // getMyPixelsButton();
     };
 
 

@@ -54,11 +54,11 @@ export const searchPixels = async (address) => {
    })
 }
 
-export const takePixel = async (id) => {
-   console.log("Taking pixel : ", id);
-   return await contract.methods.transfer(myAccount, id).send({from: myAccount}).then((res) => {
-      console.log("Res : ",res);
-      return res;
-   })
-}
+// export const takePixel = async (id) => {
+//    console.log("Taking pixel : ", id);
+//    return await contract.methods.transfer(myAccount, id).send({from: myAccount}).then((res) => {
+//       console.log("Res : ",res);
+//       return res;
+//    })
+// }
 
