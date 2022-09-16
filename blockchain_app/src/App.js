@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { initWeb3, getMyPixels, searchPixels } from "./Web3Client";
+import { initWeb3, getMyPixels, searchPixels, takePixel } from "./Web3Client";
 
 let tableDataDefault = Array(5)
   .fill()
@@ -181,8 +181,10 @@ function App() {
   }
 
   class TableTdButton extends Component {
-    pixelClickHandler = () => {
+    pixelClickHandler = async () => {
       console.log("Pixel clicked : ", this.props.td.id);
+      let res = await takePixel(this.props.td.id);
+      getMyPixelsButton();
     };
 
 

@@ -33,22 +33,9 @@ export const initWeb3 = (_setConnectButtonState) => {
    });
    const web3 = new Web3(provider)
    // const networkId = web3.eth.net.getId();
-   contract = new web3.eth.Contract(abi, "0x469247301473aB9936Aca13bDA50a806344787E0");
+   contract = new web3.eth.Contract(abi, "0x81B6748cADFBcdc5B072c968B9F7F763C7463a96");
 
 };
-
-// function checkIfConnectedOrSessionSaved(){
-//    if(!myAccount || myAccount === null || myAccount === undefined || myAccount === ""){
-//       if(!isNaN(window.ethereum._state.accounts[0])){
-//          myAccount = window.ethereum._state.accounts[0];
-//          return true;
-//       }else{
-//          return false;
-//       }
-//    }else{
-//       return true
-//    }
-// }
 
 export const getMyPixels = async () => {
    console.log("My account is: ", myAccount);
@@ -62,6 +49,14 @@ export const getMyPixels = async () => {
 export const searchPixels = async (address) => {
    console.log("Search : ", address);
    return await contract.methods.getPixelsByOwner(address).call({from: myAccount}).then((res) => {
+      console.log("Res : ",res);
+      return res;
+   })
+}
+
+export const takePixel = async (id) => {
+   console.log("Taking pixel : ", id);
+   return await contract.methods.transfer(myAccount, id).send({from: myAccount}).then((res) => {
       console.log("Res : ",res);
       return res;
    })
