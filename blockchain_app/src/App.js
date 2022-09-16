@@ -15,6 +15,7 @@ let tableDataDefault = Array(5)
       }))
   );
 
+
 function App() {
   const [connectButtonState, setConnectButtonState] = useState({
     text: "Connect wallet",
@@ -44,48 +45,62 @@ function App() {
     );
   };
 
+
+  function resetTableData() {
+    let newData = Array(5)
+      .fill()
+      .map((_, col) =>
+        Array(5)
+          .fill()
+          .map((_, i) => ({
+            id: i + col * 5,
+            x: col,
+            y: i,
+            coordId: col + "-" + i,
+            color: "#color-grey",
+          }))
+      );
+    tableDataDefault = newData;
+    setTableDataState(() => {
+      return { data: newData };
+    });
+  }
+
   const searchPixelsHandler = async () => {
     let res = await searchPixels(searchAddressState);
 
     let newData = traiterPixelAAfficher(res);
 
-    // Reset table
-    console.log("tableDataDefault : ", tableDataDefault);
-    setTableDataState((previousState) => {
-      return { ...previousState, data: tableDataDefault };
-    });
+    resetTableData();
     // Set new datas
-    setTableDataState((previousState) => {
-      return { ...previousState, data: newData };
+    setTableDataState(() => {
+      return { data: newData };
     });
   }
-  
+
   const getMyPixelsHandler = async () => {
     let res = await getMyPixels();
-    
+
     let newData = traiterPixelAAfficher(res);
 
-    // Reset table
-    setTableDataState((previousState) => {
-      return { ...previousState, data: tableDataDefault };
-    });
+    resetTableData();
     // Set new datas
-    setTableDataState((previousState) => {
-      return { ...previousState, data: newData };
+    setTableDataState(() => {
+      return { data: newData };
     });
 
   };
 
 
-  function traiterPixelAAfficher(blockChainReturn){
+  function traiterPixelAAfficher(blockChainReturn) {
     console.log("blockChainReturn: ", blockChainReturn);
 
     var ownedByMe = [];
     var newData = tableDataDefault;
 
-    for (var i = 0; i < blockChainReturn.length; i++) {
-      var id = blockChainReturn[i].id;
-      // var owner = blockChainReturn[i].owner;
+    for (var row = 0; row < blockChainReturn.length; row++) {
+      var id = blockChainReturn[row].id;
+      // var owner = blockChainReturn[row].owner;
       ownedByMe.push(Number(id));
     }
 
@@ -100,6 +115,7 @@ function App() {
     }
     return newData;
   }
+
 
   const getMyPixelsButton = () => {
     return (
@@ -123,9 +139,6 @@ function App() {
     );
   };
 
-  const pixelClickHandler = (id) => {
-    console.log("Pixel clicked : ", id);
-  };
 
   const pixelTable = () => {
     var body = tableDataState.data;
@@ -159,18 +172,33 @@ function App() {
       var rowKey = "row-" + this.props.rowindex;
       return (
         <tr key={rowKey}>
-          {row.map((val, index) => (
-            <td key={val.coordId}>
-              <button
-                className={"pixels-button "+val.color}
-                onClick={pixelClickHandler(val.id)}
-                style={{ background: val.color }}
-              >
-                {val.id}
-              </button>
-            </td>
+          {row.map((td, index) => (
+            <TableTdButton key={"td-" + index} td={td} tdindex={index} />
           ))}
         </tr>
+      );
+    }
+  }
+
+  class TableTdButton extends Component {
+    pixelClickHandler = () => {
+      console.log("Pixel clicked : ", this.props.td.id);
+    };
+
+
+    render() {
+      var td = this.props.td;
+      return (
+        <td key={td.coordId}>
+          <button
+            className={"pixels-button " + td.color}
+            onClick={this.pixelClickHandler}
+            style={{ background: td.color }}
+            id={td.id}
+          >
+            {td.id}
+          </button>
+        </td>
       );
     }
   }

@@ -2,7 +2,8 @@ import Web3 from 'web3';
 import { abi } from './contract_abi';
 
 
-let myAccount = (!!window && !isNaN(window.ethereum._state.accounts[0])) ? window.ethereum._state.accounts[0] : null;
+// let myAccount = (!!window && window.ethereum._state.accounts != null) ? window.ethereum._state.accounts[0] : null;
+let myAccount;
 let contract;
 
 export const initWeb3 = (_setConnectButtonState) => {
@@ -16,7 +17,9 @@ export const initWeb3 = (_setConnectButtonState) => {
          _setConnectButtonState((previousState) => {
             return {...previousState, text: "Connected", style: {color:"rgb(0 170 11)"}}
          });
-         console.log(accounts);
+         if(!isNaN(accounts)){
+            myAccount = accounts[0];
+         }
       }).catch(err => {
          _setConnectButtonState((previousState) => {
             return {...previousState, text: "Connect wallet", style: {color:"#444"}}
@@ -34,7 +37,18 @@ export const initWeb3 = (_setConnectButtonState) => {
 
 };
 
-
+// function checkIfConnectedOrSessionSaved(){
+//    if(!myAccount || myAccount === null || myAccount === undefined || myAccount === ""){
+//       if(!isNaN(window.ethereum._state.accounts[0])){
+//          myAccount = window.ethereum._state.accounts[0];
+//          return true;
+//       }else{
+//          return false;
+//       }
+//    }else{
+//       return true
+//    }
+// }
 
 export const getMyPixels = async () => {
    console.log("My account is: ", myAccount);
